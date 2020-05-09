@@ -1,0 +1,62 @@
+
+
+vector<int>g[10005];
+int lca[10005][20];
+int par[10005];
+int lvl[10005];
+int n;
+
+
+
+
+void dfs(int u, int par){
+    lvl[u] = 1 + lvl[par];
+    lca[u][0]=par;
+    for(int v:g[u]){
+		if (v == par) continue;
+		dfs(v, u);
+	}
+}
+
+
+void createtable()
+{
+  int p=log2(n);
+ // for(int i=1;i<=n;i++) lca[i][0]=par[i];
+   for(int i=1;i<=p;i++)
+    {
+        for(int j=1;j<=n;j++)
+        {
+            if(lca[j][i-1]==-1) continue;
+            int temp=lca[j][i-1];
+            lca[j][i]=lca[temp][i-1];
+        }
+    }
+	return;
+}
+
+int LCA(int a,int b)
+{
+    if(lvl[a]<lvl[b]) swap(a,b);
+    int dif=lvl[a]-lvl[b];
+   
+
+    while(dif>0)
+    {
+        int p=log2(dif);
+        dif-=(1<<p);
+        a=lca[a][p];
+    }
+    if(a==b) return a;
+
+    int high=log2(n);
+    for(int i=high;i>=0;i--)
+    { 
+        if(lca[a][i]!=-1 && lca[a][i]!=lca[b][i] )
+        {
+            a=lca[a][i];
+            b=lca[b][i];
+        }
+    }
+    return lca[a][0];
+}
