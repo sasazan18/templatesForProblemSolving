@@ -1,0 +1,63 @@
+
+bitset<100000005>vis;
+vector<int>prime;
+
+
+void sieve()
+{
+    vis[1]=1;
+    vis[0]=1;
+    for(int i=3;i*i<=100000000;i+=2)
+    {
+        if(!vis[i]){
+           
+        for(int j=i*i;j<=100000000;j+=i)
+        {
+            vis[j]=1;
+         
+        }
+        }
+    }
+    prime.pb(2);
+    for(int i=3;i<=100000000;i+=2)
+    {
+        if(!vis[i]) prime.pb(i);
+    }
+}
+
+
+
+////////////////////////////////////////
+
+
+prime factorization
+.................
+
+vector<int> primeFactorize( int n )
+{
+    vector<int>List;
+    int sqrtN = int( sqrt(n) ); 
+    for( int i = 0; prime[i] <= sqrtN; i++ )   
+    {
+        if( n % prime[i] == 0 )   
+        {
+           
+            while( n % prime[i] == 0 )
+            {
+                n /= prime[i]; 
+                List.pb(prime[i]);
+                
+            }
+        
+        }
+    }
+    if( n > 1 )
+    {
+       
+        List.pb(n) ;
+        
+    }
+
+    return List;
+
+}
