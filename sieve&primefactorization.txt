@@ -1,5 +1,5 @@
 
-bitset<100000005>vis;
+bitset<10000005>vis;
 vector<int>prime;
 
 
@@ -7,11 +7,11 @@ void sieve()
 {
     vis[1]=1;
     vis[0]=1;
-    for(int i=3;i*i<=100000000;i+=2)
+    for(int i=3;i*i<=10000000;i+=2)
     {
         if(!vis[i]){
            
-        for(int j=i*i;j<=100000000;j+=i)
+        for(int j=i*i;j<=10000000;j+=i)
         {
             vis[j]=1;
          
@@ -19,7 +19,7 @@ void sieve()
         }
     }
     prime.pb(2);
-    for(int i=3;i<=100000000;i+=2)
+    for(int i=3;i<=10000000;i+=2)
     {
         if(!vis[i]) prime.pb(i);
     }
