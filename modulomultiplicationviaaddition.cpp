@@ -1,3 +1,15 @@
+/*
+It is very easier to calculate (a*b) mod m. But what if a<m, b<m but a*b is such large that we can’t store it in long long too. Such as,
+ a=10^12 
+b=10^12
+m=10^15
+So, a*b will overflow. 
+
+This is why need the following approach to solve this
+
+*/
+
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
