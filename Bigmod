@@ -1,0 +1,23 @@
+
+
+
+ll bigmod(ll n,ll p,ll MOD)   //bigmod 
+{
+    ll res=1;
+
+    while(p){
+        if(p%2)
+        {
+            res= ((res%MOD) *(n%MOD))%MOD;
+            p--;
+        }
+        else
+        {
+            n= (n%MOD)*(n%MOD);
+            n%=MOD;
+            p/=2;
+        }
+    }
+    return res;
+
+}
