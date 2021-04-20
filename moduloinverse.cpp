@@ -36,7 +36,7 @@ ll powmod(ll a, ll b){ll ans = 1;while(b){if(b&1) ans = ans*a%mod;a = a*a%mod;b 
 
 
 
-ll power(ll n,ll p,ll MOD)
+ll bigmod(ll n,ll p,ll MOD)   //bigmod 
 {
     ll res=1;
 
