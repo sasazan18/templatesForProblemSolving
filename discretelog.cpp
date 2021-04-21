@@ -2,6 +2,7 @@
 using namespace std;
 
 // Returns minimum x for which a ^ x % m = b % m, a and m are co-prime.
+// Complexity : O ( sqrt(m) ) 
 // for non co prime check : https://cp-algorithms.com/algebra/discrete-log.html
 
 
