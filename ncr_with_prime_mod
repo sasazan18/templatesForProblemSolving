@@ -1,0 +1,83 @@
+
+//complexity :  O( n + log n )
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+#define mod 1000000007
+#define mxn 1000005
+
+
+ll fact[mxn];
+ll inv[mxn];
+
+
+ll mul(ll a,ll b)
+{
+    return ( (a%mod) * (b%mod) ) % mod;
+}
+
+inline ll bigmod(ll n,ll p,ll MOD)   //bigmod
+{
+    ll res=1;
+
+    while(p){
+        if(p%2)
+        {
+            res= ((res%MOD) *(n%MOD))%MOD;
+            p--;
+        }
+        else
+        {
+            n= (n%MOD)*(n%MOD);
+            n%=MOD;
+            p/=2;
+        }
+    }
+    return res;
+
+
+
+}
+
+
+void preprocess()
+{
+    fact[0] = inv[0] = 1;
+    for(int i=1; i<mxn; i++) fact[i] = mul(fact[i-1], i);
+    inv[mxn - 1] = bigmod(fact[mxn - 1], mod - 2,mod);
+    for(int i=mxn-2; i>=1; i--) inv[i] = mul(inv[i+1], (i + 1));
+}
+
+
+ll ncr(ll n,ll r)
+{
+    if(n<r) return 0;
+    ll lob = fact[n];
+    ll hor = mul(inv[r], inv[n - r]);
+    return mul(lob, hor);
+}
+
+
+
+
+int main()
+{
+
+
+
+    preprocess();
+
+
+    ll n,r;
+    cin>>n>>r;
+
+    cout<<ncr(n,r)<<endl;
+
+
+
+
+
+    return 0;
+}
