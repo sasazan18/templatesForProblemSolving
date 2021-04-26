@@ -1,0 +1,123 @@
+
+
+// when n is so large but mod value  ( a prime number ) is small enough
+// we use lucas theorem
+// we represent n and r with the base mod ( a prime number )
+// in Lucas thorem :  nCr % p = the multiplication of all  (Ai C Bi) for all i
+// where A=representation of N with base mod and B=representation of r with base mod
+// more details : link : https://www.youtube.com/watch?v=ZsZglqx33U8&t=10856s   ( 3:00:21 )
+
+
+
+
+#define mxn 7
+
+//in Lucas theorem mxn = mod as we represent n and r with base mod
+
+
+ll fact[mxn];
+ll inv[mxn];
+
+
+
+
+ll mul(ll a,ll b)
+{
+    return ( (a%mxn) * (b%mxn) ) % mxn;
+}
+
+
+inline ll bigmod(ll n,ll p,ll MOD)   //bigmod
+{
+    ll res=1;
+
+    while(p){
+        if(p%2)
+        {
+            res= ((res%MOD) *(n%MOD))%MOD;
+            p--;
+        }
+        else
+        {
+            n= (n%MOD)*(n%MOD);
+            n%=MOD;
+            p/=2;
+        }
+    }
+    return res;
+
+
+
+}
+
+void preprocess()
+{
+    fact[0] = inv[0] = 1;
+    for(int i=1; i<mxn; i++) fact[i] = mul(fact[i-1], i);
+    inv[mxn - 1] = bigmod(fact[mxn - 1], mxn - 2,mxn);
+    for(int i=mxn-2; i>=1; i--) inv[i] = mul(inv[i+1], (i + 1));
+}
+
+
+ll nCr_Lucas(ll n, ll r)
+{
+       vector<int>v1,v2;
+
+        while(n)
+        {
+            v1.pb(n%mxn);
+            n/=mxn;
+        }
+
+        while(r)
+        {
+            v2.pb(r%mxn);
+            r/=mxn;
+        }
+
+
+
+        while(v2.size()<v1.size())
+        {
+            v2.pb(0);
+        }
+
+
+
+        ll ans=1;
+
+        for(int i=0;i<v1.size();i++)
+        {
+            if(v2[i]==0) continue;
+
+            if(v2[i]>v1[i])
+            {
+                ans=0;
+                break;
+            }
+
+            ll temp =mul(mul (fact[ v1[i] ] , inv[ v2[i] ]) , inv[ v1[i]-v2[i] ]);
+
+            ans=mul(ans,temp);
+
+        }
+
+        return ans;
+}
+
+
+
+
+int main()
+{
+        preprocess();
+
+
+        ll n,r;
+        cin>>n>>r;
+
+        cout<<nCr_Lucas(n,r)<<endl;
+
+
+	return 0;
+}
