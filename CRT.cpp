@@ -11,16 +11,6 @@ using namespace std;
 vector< pair<ll,ll> > equation ;  /// this will contain the value of a and m
 
 
-ll mul ( ll a , ll b , ll MOD )
-{
-    return (a%MOD * b%MOD ) % MOD;
-}
-
-ll add ( ll a, ll b, ll MOD )
-{
-        return (a%MOD + b%MOD ) % MOD;
-}
-
 ll egcd(ll a, ll b , ll &x ,ll &y)
 {
 
@@ -76,7 +66,7 @@ pair<ll,ll> CRT()  /// it will return a  {x, N} pair, where x is the unique solu
 
        ll MOD= m1/g * m2 ; /// lcm(m1,m2)
 
-       ll x =add(   mul( mul(a1,m2/g,MOD) , q ,MOD ) ,  mul( mul(a2,m1/g,MOD) , p ,MOD ) , MOD);
+       ll x = ( (__int128)a1 * (m2/g) % MOD *q % MOD + (__int128)a2 * (m1/g) % MOD * p % MOD ) % MOD;
 
        ///Merged equation
 
