@@ -35,9 +35,20 @@ template <typename T> T POW(T B,T P){ if(P==0) return 1; if(P&1) return B*POW(B,
 ll powmod(ll a, ll b){ll ans = 1;while(b){if(b&1) ans = ans*a%mod;a = a*a%mod;b >>= 1;}return ans;}
 
 
+void init()
+{
+   #ifndef ONLINE_JUDGE
+   freopen("input.txt", "r", stdin);
+   freopen("output.txt", "w", stdout);
+   #else
+   // online submission
+   #endif
+}
+
+
 int main()
 {
-	
+	init();
 	
 	
 	
