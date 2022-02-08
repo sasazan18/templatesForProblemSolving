@@ -11,7 +11,7 @@ void sieve()
     {
         if(!vis[i]){
            
-        for(int j=i*i;j<=10000000;j+=i)
+        for(int j=i*i;j<=1000000;j+=i)
         {
             vis[j]=1;
          
@@ -19,7 +19,7 @@ void sieve()
         }
     }
     prime.pb(2);
-    for(int i=3;i<=10000000;i+=2)
+    for(int i=3;i<=1000000;i+=2)
     {
         if(!vis[i]) prime.pb(i);
     }
