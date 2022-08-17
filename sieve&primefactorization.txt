@@ -11,7 +11,7 @@ void sieve()
     {
         if(!vis[i]){
            
-        for(int j=i*i;j<=1000000;j+=i)
+        for(ll j=i*i;j<=1000000;j+=i)
         {
             vis[j]=1;
          
