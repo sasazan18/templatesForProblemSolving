@@ -26,7 +26,23 @@ void linear_sieve(){
 
 
 
+//PRIME FACTORIZATION USING LINEAR SIEVE
+
+vector<int> primefactorization(int n){
+    vector<int>pf;
+    while(n>1){
+        pf.push_back(lp[n]);
+        n/=lp[n];
+    }   
+
+    return pf;   
+}
+
+
+
+
 
 int main(){
     linear_sieve();
+    vector<int>pf  = primefactorization(124);
 }
