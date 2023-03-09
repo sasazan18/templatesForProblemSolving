@@ -18,7 +18,7 @@
     
     //finding the first minimum from a position to the left
 
-    for(int i=1;i<=n;i++){
+    for(int i=1;i<=n;i++){   // 1-based indexing
         if(s.empty()){
             s.push({arr[i],i});
             left_min[i]=0;
@@ -44,7 +44,7 @@
 
     //finding the first minimum from a position to the right
 
-    for(int i=n;i>=1;i--){
+    for(int i=n;i>=1;i--){   // 1-based indexing
         if(s2.empty()){
             s2.push({arr[i],i});
             right_min[i]=n+1;
@@ -87,7 +87,7 @@
 
     //finding the first maximum from a position to the left
 
-    for(int i=1;i<=n;i++){
+    for(int i=1;i<=n;i++){    // 1-based indexing
         if(s.empty()){
             s.push({arr[i],i});
             left_max[i]=0;
@@ -113,7 +113,7 @@
     
     //finding the first maximum from a position to the right
 
-    for(int i=n;i>=1;i--){
+    for(int i=n;i>=1;i--){   // 1-based indexing
         if(s2.empty()){
             s2.push({arr[i],i});
             right_max[i]=n+1;
